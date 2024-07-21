@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="{{url_for('static', path='css/bootstrap.min.css')}}" rel="stylesheet">
+    <script src="{{url_for('static', path='js/jquery-3.7.1.min.js')}}"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Admin Panel</h1>
+    <div class="mb-4">
+        <button class="btn btn-success" onclick="openAddModal('clients')">Добавить клиента</button>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ФИО</th>
+                    <th>Регион</th>
+                    <th>Квадратура</th>
+                    <th>E-mail</th>
+                    <th>Телефон</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="clients-table-body">
+                <!-- Data will be inserted here via jQuery -->
+            </tbody>
+        </table>
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-success" onclick="openAddModal('staff')">Добавить сотрудника</button>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Отчество</th>
+                    <th>Фото</th>
+                    <th>Описание</th>
+                    <th>Фраза</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="staff-table-body">
+                <!-- Data will be inserted here via jQuery -->
+            </tbody>
+        </table>
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-success" onclick="openAddModal('portfolio')">Добавить портфолио</button>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя хранения</th>
+                    <th>Квадратура</th>
+                    <th>Расположение</th>
+                    <th>Описание</th>
+                    <th>Картинки</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="portfolio-table-body">
+                <!-- Data will be inserted here via jQuery -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<!-- Modal for Add/Edit -->
+<div class="modal fade" id="addEditModal" tabindex="-1" aria-labelledby="addEditModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addEditModalLabel">Добавить запись</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="addEditForm">
+                    <!-- Form fields will be inserted here via jQuery -->
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Отмена</button>
+                <button type="submit" class="btn btn-primary" id="saveButton">Сохранить</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="{{url_for('static', path='js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url_for('static', path='js/bootstrap.bundle.js.map')}}"></script>
+<script src="{{url_for('static', path='js/admin.js')}}"></script>
+
+</body>
+</html>

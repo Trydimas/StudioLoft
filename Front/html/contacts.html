@@ -1,0 +1,62 @@
+{% extends 'base.html' %}
+
+
+{% block include_style %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/contacts.css' ) }}">
+{% endblock include_style %}
+
+
+{% block content %}
+    <!-- Contact Section -->
+    <!-- "{{url_for('static', path = 'img/Any img/JK_evening.jpg')}}" -->
+    <section class="contact-section content-slide">
+      <img src="{{ url_for('static', path = 'img/Any img/JK_evening.jpg') }}" alt="Background Image">
+      <div class="contact-info">
+        <h2>Контакты</h2>
+        <a href="tel:+79055773224" class="d-block text-decoration-none w-100 text-white">Телефон: +7 (905) 577-32-24</a>
+        <a class="d-block text-decoration-none w-100 text-white">Email: isip_d.v.akentyev@mpt.ru</a>
+        <a class="d-block text-decoration-none w-100 text-white">Адрес: г. Москва, ул. Примерная, д. 1</a>
+        <div class="social-icons">
+          <a href="http://t.me/DmityiyAkentev" class="p-1"><i class="bi bi-telegram"></i></a>
+          <a href="https://api.whatsapp.com/send/?phone=79055773224&text=Здравствуйте" class="p-1"><i class="bi bi-whatsapp"></i></a>
+        </div>
+      </div>
+    </section>
+    <!-- /Contact Section -->
+    <!-- Form Section -->
+    <section class="form-section content-slide" id = "form-link">
+      <div class="container">
+        <h2 class="text-center">Мы свяжемся с вами</h2>
+        <form class="contact-form mt-4" method="post" action="contacts">
+            <div class="mb-3">
+              <input type="text" class="form-control" placeholder="ФИО" name="f_FIO" required>
+            </div>
+            <div class="mb-3">
+              <input type="tel" class="form-control" id = "phone" placeholder="Номер телефона" name="f_phone_number" required>
+            </div>
+            <div class="mb-3">
+              <input type="email" class="form-control" placeholder="Почта" name="f_email" required>
+            </div>
+            <div class="mb-3">
+              <select class="form-select" name="f_type_send_form" required>
+                <option value="">Выбрать тему</option>
+                <option value="Сотрудничество">Сотрудничать с нами</option>
+                <option value="Услуга">Получить услугу</option>
+              </select>
+            </div>
+            <div class="mb-3">
+              <textarea class="form-control" rows="4" placeholder="Ваше сообщение" name="f_message_form" required></textarea>
+            </div>
+            <div class="d-grid">
+              <button type="submit" class="btn submit-btn">Отправить</button>
+            </div>
+        </form>
+      </div>
+    </section>
+    <!-- /Form Section -->
+  {% endblock content %}
+
+
+{% block scriptJS %}
+    <script src="{{url_for('static', path = 'js/contacts.js')}}"></script>
+{% endblock scriptJS%}

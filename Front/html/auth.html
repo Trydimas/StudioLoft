@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>page_title </title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/bootstrap.min.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='icon/bootstrap-icons.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='css/auth.css' ) }}">
+</head>
+<body>
+    <style>
+        body {
+            background-color: white;
+            color: black;
+        }
+        .auth-container {
+            max-width: 400px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #000;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .form-control {
+            border: 1px solid #000;
+        }
+        .form-control:focus {
+            border-color: darkred;
+            box-shadow: none;
+        }
+        .btn-custom {
+            background-color: red;
+            color: white;
+            border: none;
+        }
+        .btn-custom:hover {
+            background-color: white;
+            color: red;
+            border: 1px solid red;
+        }
+        .error-message {
+            color: red;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="auth-container">
+            <h1>Авторизация</h1>
+            {% if error %}
+                <div class="error-message">Неправильный логин или пароль</div>
+            {% endif %}
+            <form method="post" action="login/submit">
+                <div class="mb-3">
+                    <input type="text" class="form-control" id="username" name="username" placeholder="Username">
+                </div>
+                <div class="mb-3">
+                    <input type="password" class="form-control" id="password" name="password" placeholder="Password">
+                </div>
+                <button type="submit" class="btn btn-custom w-100">Войти</button>
+            </form>
+        </div>
+    </div>
+
+
+    <script src="{{url_for('static', path='js/jquery-3.7.1.min.js')}}"></script>
+    <script src="{{url_for('static', path='js/jquery.mask.js')}}"></script>
+    <script src="{{url_for('static', path='js/bootstrap.bundle.min.js')}}"></script>
+</body>
+</html>

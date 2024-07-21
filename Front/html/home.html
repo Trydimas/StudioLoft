@@ -1,0 +1,548 @@
+{%extends 'base.html'%}
+
+
+{% block include_style %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/home.css' ) }}">
+{% endblock include_style %}
+
+
+{% block content %}
+    <!-- carousel block -->
+    <section class="desc-carousel content-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 mb-3 mt-5">
+                    <h1 class="fw-bold">Создаём современные дизайны интерьеров для квартир и загородных домов</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6 col-sm-12 mb-2">
+                    <h5 class="text-start">Потрясающий дизайн-проект точно в срок</h5>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2">
+                    <h5 class="text-start">Вы 100% уложитесь в бюджет</h5>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2">
+                    <h5 class="text-start">Неограниченное количество правок планировок до слова - "Идеально!"</h5>
+                </div>
+                <div class="col-md-6 col-sm-12 mb-2">
+                    <h5 class="text-start">Гарантируем полное соответствие дизайн-проекта и готового интерьера</h5>
+                </div>
+            </div>
+        </div>
+         <!-- Слайдер -->
+        <div class="container-fluid carousel-content mt-4">
+            <div id="carouselIndicators" class="carousel slide carousel-fade" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Получение пути до фото из БЭК -->
+                    {% for item in ex_carousel_items[5] %}
+                    {% if loop.first %}
+                        <div class="carousel-item active">
+                            <img src="{{url_for ('static', path = 'img/projects' )}}/{{ex_carousel_items[1]}}/{{item}}" class="d-block w-100" alt="...">
+                        </div>
+                    {% else %}
+                    <div class="carousel-item">
+                        <img src="{{url_for ('static', path = 'img/projects' )}}/{{ex_carousel_items[1]}}/{{item}}" class="d-block w-100" alt="...">
+                    </div>
+                    {% endif%}
+                    {%endfor%}
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselIndicators"  data-bs-slide="prev">
+                  <span class="btn-LR-carousel" aria-hidden="true"><i class="bi bi-chevron-left"></i></span>
+                  <span class="visually-hidden">Предыдущий</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselIndicators"  data-bs-slide="next">
+                  <span class="btn-LR-carousel" aria-hidden="true"><i class="bi bi-chevron-right"></i></span>
+                  <span class="visually-hidden">Следующий</span>
+                </button>
+            </div>
+        </div>
+        <!-- /Слайдер -->
+    </section>
+    <!-- carousel block -->
+    
+    <!-- Карточки -->
+    <section class="professional-expertise-block content-slide">
+        <div class="container">
+            <div class="row mb-5">
+                <div class="col-lg-2 col-md-5 col-11 border border-dark my-3 mx-auto ">
+                    <i class="bi bi-clipboard-data text-center fs-2 mb-5 mt-4 w-100 d-block"></i>
+                    <h2 class="fs-5 text-center w-100 d-block">практичность</h2>
+                    <span class="text-center w-100 pb-2 d-block">Воплощаем реальные дизайны</span>
+                </div>
+                <div class="col-lg-2 col-md-5 col-11 border border-dark my-3 mx-auto">
+                    <i class="bi bi-mortarboard text-center fs-2 mb-5 mt-4 w-100 d-block"></i>
+                    <h2 class="fs-5 text-center w-100 d-block">Образование</h2>
+                    <span class="text-center w-100 pb-2 d-block">У всех дизайнеров высшее архитектурное образование</span>
+                </div>
+                <div class="col-lg-2 col-md-5 col-11 border border-dark my-3 mx-auto">
+                    <i class="bi bi-calendar-check text-center fs-2 mb-5 mt-4 w-100 d-block"></i>
+                    <h2 class="fs-5 text-center w-100 d-block">Опыт</h2>
+                    <span class="text-center w-100 pb-2 d-block">Занимаемся дизайном интерьера более 15 лет</span>
+                </div>
+                <div class="col-lg-2 col-md-5 col-11 border border-dark my-3 mx-auto">
+                    <i class="bi bi-person-check text-center fs-2 mb-5 mt-4 w-100 d-block"></i>
+                    <h2 class="fs-5 text-center w-100 d-block">Надзор</h2>
+                    <span class="text-center w-100  pb-2 d-block">Предоставляем 2 месяца авторского надзора</span>
+                </div>
+            </div>
+            <!-- /Карточки -->
+
+            <!-- слайдер с работниками -->
+            <div id="carousel_workers" class="carousel slide carousel_workers" data-bs-ride="carousel">
+                <div class="carousel-inner">
+                    <!-- Получение пути до фото из БЭК -->
+                    {% for value in staff_carousel_items %}
+                    <!-- {{value}} -->
+                        {% if loop.first %}
+                            <div class="carousel-item active">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h2>
+                                                "{{value[5]}}"
+                                            </h2>
+                                            <p>
+                                                {{value[4]}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="{{url_for('static', path = 'img/staff/')}}/{{value[6]}}" class="d-block w-100" alt="...">
+                                            <div class="caption-box">
+                                                <p>{{ value[1] }}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% else %}
+                            <div class="carousel-item">
+                                <div class="container">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <h2>
+                                                "{{value[5]}}"
+                                            </h2>
+                                            <p>
+                                                {{value[4]}}
+                                            </p>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <img src="{{url_for('static', path = 'img/staff/')}}{{value[6]}}" class="d-block w-100" alt="...">
+                                            <div class="caption-box">
+                                                <p>{{value[1]}}</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endif%}
+                    {%endfor%}
+                </div>
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carousel_workers" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+                    <button type="button" data-bs-target="#carousel_workers" data-bs-slide-to="1" aria-label="Slide 2"></button>
+                    <button type="button" data-bs-target="#carousel_workers" data-bs-slide-to="2" aria-label="Slide 3"></button>
+                </div>
+            </div>
+             <!-- /Слайдер с работниками-->
+             
+             <!-- Блоки достижений -->
+             <div class="container mt-5">
+                <div class="row">
+                    <div class="col-md-4 col-sm-12">
+                        <div class="info-block">
+                            <h5>15 лет</h5>
+                            <p>создаем и реализуем неповторимые интерьеры</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-12">
+                        <div class="info-block">
+                            <h5>Более 250</h5>
+                            <p>созданных проектов интерьера</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-16">
+                        <div class="info-block">
+                            <h5>650 м²</h5>
+                            <p>самый большой реализованный объект</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+             <!-- /Блоки достижений -->
+        </div>
+    </section>
+    <!-- /Карточки -->
+
+    <!-- Картинки проектов -->
+    <section class="content-slide our_projects container-fluid mt-5">
+        {% if our_project | length >4 %}
+            <div class="row mb-3">
+                <div class="col-12 text-center">
+                    <h1>Наши работы</h1>
+                </div>
+                <div class="col-12 text-center">
+                    <span>В данном портфолио представлены реальные фотографии интерьеров, созданных нашими дизайнерами.</span>
+                </div>
+                <div class="col-12 text-center" style="color: var(--color-gr)">
+                    <span>Нажмите на фото, откроется страница, посвященная проекту с описанием, чертежами и фото.</span>
+                </div>
+            </div>
+        
+            <div class="photos-projects">
+                <div class="row g-1">
+                    <!-- Первая картинка, занимает 2 строки и 1 столбец -->
+                    <div class="col-12 col-md-6">
+                        <div class="img-container h-100">
+                            <img src="{{ url_for('static', path = 'img/projects/') }}{{ our_project[0][1] }}/{{ our_project[0][5][0] }}" class="img-fluid h-100" alt="Image 1">
+                            <div class="overlay text-center">
+                                <h3>{{ our_project[0][3]}}</h3>
+                                <p>{{ our_project[0][2]}}м²</p>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- Остальные картинки -->
+                    <div class="col-12 col-md-6">
+                        <div class="row g-1">
+                            <div class="col-6">
+                                <div class="img-container h-100">
+                                    <img src="{{ url_for('static', path = 'img/projects/') }}{{ our_project[1][1] }}/{{ our_project[1][5][0] }}" class="img-fluid h-100" alt="Image 2">
+                                    <div class="overlay text-center">
+                                        <h4>{{ our_project[1][3] }}</h4>
+                                        <p>{{ our_project[1][2] }}м²</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="img-container h-100">
+                                    <img src="{{ url_for('static', path = 'img/projects/') }}{{ our_project[2][1] }}/{{ our_project[2][5][0] }}" class="img-fluid h-100" alt="Image 3">
+                                    <div class="overlay text-center">
+                                        <h5>{{ our_project[2][3] }}</h5>
+                                        <p>{{ our_project[2][2] }}м²</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row g-1 mt-1 mt-md-1">
+                            <div class="col-6">
+                                <div class="img-container h-100">
+                                    <img src="{{ url_for('static', path = 'img/projects/') }}{{ our_project[3][1] }}/{{ our_project[3][5][0] }}" class="img-fluid h-100" alt="Image 4">
+                                    <div class="overlay text-center">
+                                        <h5>{{ our_project[3][3] }}</h5>
+                                        <p>{{ our_project[3][2] }}м²</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-6">
+                                <div class="img-container h-100">
+                                    <img src="{{ url_for('static', path = 'img/projects/') }}{{ our_project[4][1] }}/{{ our_project[4][5][0] }}" class="img-fluid h-100" alt="Image 5">
+                                    <div class="overlay text-center">
+                                        <h5>{{ our_project[4][3] }}</h5>
+                                        <p>{{ our_project[4][2] }}м²</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {%endif%} 
+        <div class="row mt-5 mb-5">
+            <div class="row justify-content-center">
+                <div class="col-auto mb-2">
+                  <a href="{{ url_for('get_contacts_page') }}#form-link" class="btn btn-discuss">Обсудить проект</a>
+                </div>
+                <div class="col-auto">
+                  <a href="{{ url_for('get_portfolio_page') }}" class="btn btn-more">Больше проектов</a>
+                </div>
+              </div>
+    </section>
+    <!-- /Картинки проектов -->
+    <!-- преимущества -->
+    <section class="advantages content-slide">
+        <div class="container">
+            <div class="row">
+                <div class="col-12 text-center mb-5">
+                    <h1>Преимущества</h1>
+                </div>
+            </div>
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <div class="custom-block p-4 text-center h-100">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-lamp d-block"></i>
+                        </div>
+                        <b  class="mb-3 mt-3 d-block">Создаем авторские интерьеры</b>
+                        <p class="d-block">
+                            Разрабатываем уникальные интерьеры любой сложности и индивидуально под Вас. 
+                            Учитываем все Ваши пожелания и потребности. 
+                            Используем нешаблонные решения для повседневного комфорта
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="custom-block p-4 text-center h-100">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-alarm d-block"></i>
+                        </div>
+                        <b class="mb-3 mt-3 d-block">Ценим Ваше время</b>
+                        <p class="">
+                            Предоставляем полный комплекс услуг. 
+                            Решение всех задач на объекте берем на себя, а Вы занимаетесь тем, что любите. 
+                            Контролируем все этапы работы, обеспечиваем соблюдение сроков и бюджета.
+                        </p>
+                    </div>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="custom-block p-4 text-center h-100">
+                        <div class="icon-wrapper">
+                            <i class="bi bi-cash-coin d-block"></i>
+                        </div>
+                        <b class="mb-3 mt-3 d-block">Разумно планируем бюджет</b>
+                        <p class="d-block">
+                            Учитываем финансовые возможности заказчика, предлагаем лучшее решение. 
+                            Помогаем экономить на каждом этапе, оптимально распределяя расходы. 
+                            Предлагаем максимально удобные условия и адекватные цены.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- /преимущества -->
+
+     <!-- Заголовок и текст -->
+     <section class="text-center my-5 content-slide">
+        <h1 class="mb-3">Как мы работаем</h1>
+        <p>Продумываем каждый сантиметр и создаём идеальное сочетание стиля и эргономики.</p>
+    </section>
+
+    <!-- Карточки -->
+    <section class="container my-5 content-slide">
+        <div class="row">
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', path = 'img/Any img/Consultation_designers.jpg') }}" class="card-img-top d-block h-25 " alt="Image 1">
+                    <div class="card-body h-75">
+                        <h5 class="card-title">Консультация</h5>
+                        <ul class="custom-list">
+                            <li>Консультация с квалифицированным дизайнером.</li>
+                            <li>Подробный разбор Ваших пожеланий.</li>
+                            <li>Идеи и решения по Вашему интерьеру, с учетом всех Ваших запросов.</li>
+                        </ul>
+                        <p class="card-text text-muted">Уникальное предложение по взаимовыгодному сотрудничеству!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', path = 'img/Any img/Plan_designers.jpg') }}" class="card-img-top d-block h-25" alt="Image 2">
+                    <div class="card-body h-75">
+                        <h5 class="card-title">Планировка</h5>
+                        <ul class="custom-list">
+                            <li>Выезд на объект для проведения замера.</li>
+                            <li>План помещения с делением на функциональные зоны с расстановкой мебели, сантехники, с учетом разводки коммуникаций.</li>
+                        </ul>
+                        <p class="card-text text-muted">Мы не ограничиваем количество планировочных решений.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', path = 'img/Any img/Design_Interier.png') }}" class="card-img-top d-block h-25" alt="Image 3">
+                    <div class="card-body h-75">
+                        <h5 class="card-title">Дизайн интерьера</h5>
+                        <ul class="custom-list">
+                            <li>Разработка идей и оптимальных решений, отражающих Ваш будущий интерьер.</li>
+                            <li>Создание реалистичной виртуальной модели.</li>
+                            <li>Полный комплект технической документации для строителей и подрядчиков.</li>
+                        </ul>
+                        <p class="card-text text-muted">Современный дизайн интерьера без страданий!</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-12 col-lg-3 mb-4">
+                <div class="card h-100">
+                    <img src="{{ url_for('static', path = 'img/Any img/autor_nadzor.jpg') }}" class="card-img-top d-block h-25" alt="Image 4">
+                    <div class="card-body h-75">
+                        <h5 class="card-title">Авторский надзор</h5>
+                        <ul class="custom-list">
+                            <li>Контроль соответствия работ проекту интерьера.</li>
+                            <li> Составление графиков закупок и проведения ремонтных работ.</li>
+                            <li>Организация доставок, работа с рекламациями.</li>
+                            <li>Помощь в выборе отделочных материалов, мебели, сантехники, освещения.</li>
+                        </ul>
+                        <p class="card-text text-muted">Мы с Вами до конца ремонта!</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Блок с затемнённым фоном -->
+    <section class="bg-cover text-white text-center d-flex align-items-center justify-content-center content-slide" id="price">
+        <img src="{{url_for('static', path = 'img/Any img/drawings.jpg')}}" alt="Background Image">
+        <div>
+            <h2 class="text-uppercase">Расчитайте стоимость проекта</h2>
+            <p>Быстро. Просто.</p>
+            <!-- Добавить выскакивающее окно -->
+            <button class="btn btn-danger btn-lg" data-bs-target="#CostModal" data-bs-toggle="modal">Узнайте стоимость</a>
+        </div>
+    </section>
+    <!-- /Блок с затемнённым фоном -->
+    
+    <!-- Модальное окно -->
+
+    <div class="modal fade" id="CostModal" tabindex="-1" aria-labelledby="CostModal" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="CostModal">Заполните форму</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+                <form class="contact-form mt-4" method="post" action="/pages/">
+                    <div class="mb-3">
+                        <label for="fullName" class="form-label">ФИО</label>
+                      <input type="text" class="form-control"  name="f_FIO" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="phone" class="form-label">Телефон</label>
+                      <input type="tel" class="form-control" id = "phone"  name="f_phone_number" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="email" class="form-label">Почта</label>
+                      <input type="email" class="form-control"  name="f_email" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="squareMeters" class="form-label">Квадратные метры (м<sup>2</sup>)</label>
+                        <input type="text" class="form-control"  name="f_size" required>
+                    </div>
+                    <div class="mb-3">
+                        <label for="district" class="form-label">Район</label>
+                      <input type="text" class="form-control" name="f_location" required>
+                    </div>
+                    <div class="d-grid">
+                      <button type="submit" class="btn submit-btn">Отправить</button>
+                    </div>
+                </form>
+              
+              <div id="successMessage" class="mt-3" style="display: none;">
+                Мы скоро свяжемся с вами!
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+
+    <!-- /Модальное окно -->
+
+     <!-- Аккордеон -->
+     <section class="container my-5 content-slide">
+        <div class="row mb-3">
+            <div class="col-12 text-center">
+                <h1>Часто задаваемые вопросы</h1>
+            </div>
+        </div>
+        <div class="accordion" id="accordionExample">
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                    <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                        Часы работы?
+                    </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Наши сотрудники работают в гибком графике. 
+                        Мы планируем свою работу так, чтобы организовывать встречи в удобное для заказчика время и регулярно присутствовать на стройке. 
+                        Мы остаемся на связи 24 часа и работаем в выходные.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Сроки разработки и оплаты дизайн-проекта интерьера квартиры?
+                    </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        На сроки разработки дизайн-проекта влияет площадь объекта, в среднем:
+                        <br>
+                        <br>    
+                        <b>В течении 1 дня</b> обмер объекта, оплата разработки планировки в этот же день.
+                        <br>
+                        <br>
+                        <b>Через 7 дней</b> заказчику предоставляются варианты планировки. 50% стоимости дизайн-проекта заказчик оплачивает после утверждения планировки.
+                        <br>
+                        <br>
+                        <b>Через 30 дней</b> с момента утверждения планировки, визуализируется интерьер. Оформление списка покупок и разработка проектной документации происходит параллельно с визуализацией. Оставшиеся 50% стоимости дизайн-проекта заказчик оплачивает перед разработкой технической документации.
+                        <br>
+                        <br>
+                        <b>С началом стройки</b> и в течении 1 месяц авторский надзор осуществляете бесплатно. При необходимости последующий авторский надзор оплачивается до начала следующего месяца.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingThree">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                        Что входит в состав документации дизайн-проекта интерьера квартиры?
+                    </button>
+                </h2>
+                <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        <ul>
+                            <li>План по обмеру (включая размеры и экспликацию).</li>
+                            <li>Утвержденная планировка.</li>
+                            <li>План монтажа/демонтажа стен.</li>
+                            <li>План расположения напольных покрытий.</li>
+                            <li>План расположения гидроизоляции, сантехники, отопления и теплого пола.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFour">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseThree">
+                        Возможен дизайн интерьера под ключ?
+                    </button>
+                </h2>
+                <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        Да, за дополнительную плату мы возьмем на себя управление и 
+                        контроль над строительными работами, в том числе, выбор строительной бригады, 
+                        заказ и доставку строительных материалов, мебели, освещения и предметов интерьера, 
+                        минимизируя вовлечения заказчика в процесс ремонта.
+                    </div>
+                </div>
+            </div>
+            <div class="accordion-item">
+                <h2 class="accordion-header" id="headingFive">
+                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseThree">
+                        Как не выйти за рамки бюджета?
+                    </button>
+                </h2>
+                <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#accordionExample">
+                    <div class="accordion-body">
+                        На старте сотрудничества Вы обозначаете бюджет 
+                        (сумму, которую Вы готовы потратить на комплектацию объекта). 
+                        Мебель и декор дизайнер подбирает, исходя из этой цифры и предлагает оптимальное решение
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row mt-5">
+            <div class="col-12 d-flex justify-content-center">
+                <!-- ССЫЛКА НА WHATSAPP -->
+                <a href="https://skobelkin.ru/whatsapp/79055773224?text=Здравствуйте," class="btn btn-discuss">Связаться с нами</a> 
+            </div>
+        </div>
+    </section>
+
+{% endblock content %}
+
+{% block scriptJS %}
+    <script src="{{url_for('static', path = 'js/home.js')}}"></script>
+{% endblock scriptJS%}

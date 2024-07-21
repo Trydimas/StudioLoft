@@ -1,0 +1,56 @@
+@import url(base.css);
+
+.image-card {
+    position: relative;
+}
+
+.image-overlay {
+    transition: 0.5s ease;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 100%;
+    width: 100%;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: rgba(0, 0, 0, 0.5);
+}
+
+.image-card:hover .overlay {
+    opacity: 1;
+}
+
+.text {
+    color: white;
+    font-size: 20px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    text-align: center;
+}
+
+/* Отступ снизу для футера */
+.container {
+    margin-bottom: 50px;
+}
+
+.btn-discuss{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color: var(--color-r);
+    color: var(--color-wh);
+}
+.btn-discuss:hover{
+    background: var(--color-wh);
+    border-color: var(--color-r);
+    color: var(--color-r);
+}

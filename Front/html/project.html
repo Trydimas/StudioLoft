@@ -1,0 +1,35 @@
+{% extends 'base.html' %}
+{% block include_style %}
+<link rel="stylesheet" href="{{ url_for('static', path='css/project.css' ) }}">
+
+{% endblock include_style %}
+
+
+ <!-- /HEADER -->
+
+{% block content %}   
+ 
+    <div class="container my-5">
+        <h1 class="text-center text-black display-4">{{ image.name_ru }}</h1>
+        {% if image.description %}
+        <p class="text-center mt-3">{{ image.description }}</p>
+        {% endif %}
+        <div class="row">
+            <div class="col-12 mb-4">
+                <img src="{{ url_for('static', path='img/projects' ) }}/{{image.name}}/{{image.images[1]}}" class="img-fluid d-block h-100" alt="img">
+            </div>
+            {% for additional_image in image.images %}
+            <div class="col-md-4 mb-4">
+                <img src="{{ url_for('static', path='img/projects' ) }}/{{image.name}}/{{ additional_image }}" class="img-fluid d-block h-100" alt="Additional Image">
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+ 
+{% endblock content %}
+    
+ <!-- FOOTER -->
+
+{% block scriptJS %}{% endblock scriptJS%}
+</body>
+</html>

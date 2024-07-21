@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ page_title }}</title>
+    <link rel="stylesheet" href="{{ url_for('static', path='css/bootstrap.min.css' ) }}">
+    <link rel="stylesheet" href="{{ url_for('static', path='icon/bootstrap-icons.css' ) }}">
+    {% block include_style %}{% endblock include_style %}
+</head>
+<body>
+    <!-- HEADER -->
+    <header>
+        <div class="container"> 
+            <!-- Верхняя часть -->
+            <div class="opened-menu content-slide" id="masthead">
+                <div class="row p-3">
+                        <div class="col-5 align-content-center">
+                            <a href="{{ url_for('get_home_page') }}" class="navbar-brand text-uppercase">
+                                studio loft
+                            </a>
+                        </div>
+                    <div class="col-7 text-end">
+                        <a href="tel:+790555773224" class="phone-number number-pc me-4">8-(905)-577-32-24</a>
+                        <a href="{{ url_for('get_contacts_page') }}#form-link" type="button" class="btn btn-discuss-nav">Обсудить проект</a>
+                        <div class="menu-btn" id="menu-btn">
+                            <span></span>
+                        </div>
+                    </div>
+                </div> 
+            </div>
+            <!-- нижняя часть -->
+            <div class="hiden-menu">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <ul class="navbar-menu">
+                            <li class="px-sm-5 pb-sm-3 mt-4"><a href="{{ url_for('get_home_page') }}">О нас</a></li>
+                            <li class="px-sm-5 pb-sm-3 mt-4"><a href="{{ url_for('get_portfolio_page') }}">Портфолио</a></li>
+                            <li class="px-sm-5 pb-sm-3 mt-4"><a href="{{ url_for('get_home_page') }}#price">Цены</a></li>
+                            <li class="px-sm-5 pb-sm-3 mt-4"><a href="{{ url_for('get_contacts_page') }}">Контакты</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-12 text-center mt-auto number-ph">
+                        <a href="tel:+790555773224" class="phone-number">8-(905)-577-32-24</a>
+                        <ul class="mt-4 mb-4 list-unstyled d-flex justify-content-center">
+                            <a href="http://t.me/DmityiyAkentev" class="p-1 text-white"><i class="bi bi-telegram"></i></a>
+                            <a href="https://api.whatsapp.com/send/?phone=79055773224&text=Здравствуйте" class="p-1 text-white"><i class="bi bi-whatsapp"></i></a>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <!-- /HEADER -->
+
+    {% block content %}    {% endblock content %}
+    
+    <!-- FOOTER -->
+    <footer class="footer content-slide">
+        <div class="container">
+            <div class="row text-center text-md-start">
+                <!-- Логотип и соц-сети -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                        <a href="" class="navbar-brand text-uppercase">
+                            studio loft
+                        </a>
+                    <div class="mb-3">
+                        <a href="http://t.me/DmityiyAkentev"><i class="bi bi-telegram"></i></a>
+                        <a href="https://api.whatsapp.com/send/?phone=79055773224&text=Здравствуйте"><i class="bi bi-whatsapp"></i></a>
+
+                    </div>
+                    <p>&copy; 2024 STUDIO LOFT</p>
+                </div>
+                <!-- Основные разделы -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Основные разделы</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{{ url_for('get_home_page') }}">О нас</a></li>
+                        <li><a href="{{ url_for('get_portfolio_page') }}">Портфолио</a></li>
+                        <li><a href="{{ url_for('get_home_page') }}#price">Цены</a></li>
+                        <li><a href="{{ url_for('get_contacts_page') }}">Контакты</a></li>
+                    </ul>
+                </div>
+                <!-- Связь с нами -->
+                <div class="col-md-4 mb-4 mb-md-0">
+                    <h5>Связь с нами</h5>
+                    <ul class="list-unstyled">
+                        <li><a>Email: isip_d.v.akentyev@mpt.ru</a></li>
+                        <li><a href="tel:+79055773224">Телефон: +7(905)-577-32-24</a></li>
+                        <li><a>Адрес: ул. Пример, 123</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </footer>
+      <!-- /FOOTER -->
+      
+
+<script src="{{url_for('static', path='js/jquery-3.7.1.min.js')}}"></script>
+<script src="{{url_for('static', path='js/jquery.mask.js')}}"></script>
+<script src="{{url_for('static', path='js/bootstrap.bundle.min.js')}}"></script>
+<script src="{{url_for('static', path='js/script.js')}}"></script>
+{% block scriptJS %}{% endblock scriptJS%}
+</body>
+</html>

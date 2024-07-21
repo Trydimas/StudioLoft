@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+
+{% block include_style %}
+    <link rel="stylesheet" href="{{ url_for('static', path='css/portfolio.css' ) }}">
+    
+{% endblock include_style %}
+
+
+{% block content %}
+    <div class="container my-5 content-slide">
+        <h1 class="text-center text-black display-4 mb-4">Проекты</h1>
+        <div id="image-grid" class="row">
+            {% for image in images %}
+            <div class="col-md-4 mb-4">
+                <div class="card image-card  h-100">
+                    <a href="portfolio/project/{{ image.id }}" class="d-block h-100">
+                        <img src="{{ url_for('static', path='/img/projects') }}/{{ image.Name_project }}/{{ image.Images[0] }}" class="card-img-top h-100 d-block" alt="">
+                        <div class="overlay d-flex">
+                            <div class="text">{{ image.Name_ru }}</div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+        <div class="text-center d-flex justify-content-center">
+            <button id="load-more" class="btn btn-discuss">Показать ещё</button>
+        </div>
+    </div>
+{% endblock content %}
+
+
+{% block scriptJS %}
+    <script>
+        $(document).ready(function() {
+    let offset = 1;
+    const loadMoreButton = $('#load-more');
+
+    loadMoreButton.click(function() {
+        $.get("portfolio/more", { offset: offset }, function(data) {
+            if (data.images.length > 0) {
+                data.images.forEach(function(image) {
+                    // Разбиваем строку на массив и берем первый элемент
+                    let firstImage = image.images[0];
+                    $('#image-grid').append(`
+                        <div class="col-md-4 mb-4">
+                            <div class="card image-card h-100">
+                                <a href="portfolio/project/${image.id}" class="d-block h-100">
+                                    <img src="{{ url_for('static', path='img/projects') }}/${image.name}/${firstImage}" class="card-img-top image-overlay d-block h-100" alt="">
+                                    <div class="overlay">
+                                        <div class="text">${image.name_ru}</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    `);
+                });
+                offset += 1;
+
+                if (data.images.length < 9) {
+                    loadMoreButton.hide();
+                }
+            } else {
+                loadMoreButton.hide();
+            }
+        });
+    });
+});
+    </script>
+{% endblock scriptJS %}

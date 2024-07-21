@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Panel</title>
+    <link href="{{ url_for('static', path='css/bootstrap.min.css') }}" rel="stylesheet">
+    <script src="{{ url_for('static', path='js/jquery-3.7.1.min.js') }}"></script>
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Admin Panel</h1>
+    <div class="mb-4">
+        <button class="btn btn-success" onclick="openAddModal('clients')">Добавить клиента</button>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>ФИО</th>
+                    <th>Регион</th>
+                    <th>Размер квартиры</th>
+                    <th>Email</th>
+                    <th>Телефон</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="clients-body">
+                <!-- Clients data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-success" onclick="openAddModal('staff')">Добавить сотрудника</button>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Имя</th>
+                    <th>Фамилия</th>
+                    <th>Отчество</th>
+                    <th>Описание</th>
+                    <th>Фраза</th>
+                    <th>Фото</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="staff-body">
+                <!-- Staff data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+    <div class="mb-4">
+        <button class="btn btn-success" onclick="openAddModal('portfolio')">Добавить проект</button>
+        <table class="table table-striped mt-3">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Название проекта</th>
+                    <th>Размер</th>
+                    <th>Описание</th>
+                    <th>Изображения</th>
+                    <th>Действия</th>
+                </tr>
+            </thead>
+            <tbody id="portfolio-body">
+                <!-- Portfolio data will be populated here -->
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<script>
+    $(document).ready(function() {
+        fetchClients();
+        fetchStaff();
+        fetchPortfolio();
+    });
+
+    function fetchClients() {
+        $.get('/api/clients', function(data) {
+            let tbody = $('#clients-body');
+            tbody.empty();
+            data.forEach(client => {
+                tbody.append(`<tr>
+                    <td>${client.id}</td>
+                    <td>${client.fio}</td>
+                    <td>${client.region}</td>
+                    <td>${client.size}</td>
+                    <td>${client.email}</td>
+                    <td>${client.phone}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="openEditModal('clients', ${client.id})">Изменить</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteClient(${client.id})">Удалить</button>
+                    </td>
+                </tr>`);
+            });
+        });
+    }
+
+    function fetchStaff() {
+        $.get('/api/staff', function(data) {
+            let tbody = $('#staff-body');
+            tbody.empty();
+            data.forEach(member => {
+                tbody.append(`<tr>
+                    <td>${member.id}</td>
+                    <td>${member.first_name}</td>
+                    <td>${member.last_name}</td>
+                    <td>${member.patronymic}</td>
+                    <td>${member.description}</td>
+                    <td>${member.phrase}</td>
+                    <td><img src="${member.photo}" alt="Фото" width="50"></td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="openEditModal('staff', ${member.id})">Изменить</button>
+                        <button class="btn btn-danger btn-sm" onclick="deleteStaff(${member.id})">Удалить</button>
+                    </td>
+                </tr>`);
+            });
+        });
+    }
+
+    function fetchPortfolio() {
+        $.get('/api/portfolio', function(data) {
+            let tbody = $('#portfolio-body');
+            tbody.empty();
+            data.forEach(item => {
+                tbody.append(`<tr>
+                    <td>${item.id}</td>
+                    <td>${item.storage_name}</td>
+                    <td>${item.size}</td>
+                    <td>${item.location}</td>
+                    <td>${item.description}</td>
+                    <td>${item.images}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="openEditModal('portfolio', ${item.id})">Изменить</button>
+                        <button class="btn btn-danger btn-sm" onclick="deletePortfolio(${item.id})">Удалить</button>
+                    </td>
+                </tr>`);
+            });
+        });
+    }
+
+    function openAddModal(section) {
+        // Open modal for adding new entry
+    }
+
+    function openEditModal(section, id) {
+        // Open modal for editing entry
+    }
+
+    function deleteClient(id) {
+        $.ajax({
+            url: `/api/clients/${id}`,
+            type: 'DELETE',
+            success: function(result) {
+                fetchClients();
+            }
+        });
+    }
+
+    function deleteStaff(id) {
+        $.ajax({
+            url: `/api/staff/${id}`,
+            type: 'DELETE',
+            success: function(result) {
+                fetchStaff();
+            }
+        });
+    }
+
+    function deletePortfolio(id) {
+        $.ajax({
+            url: `/api/portfolio/${id}`,
+            type: 'DELETE',
+            success: function(result) {
+                fetchPortfolio();
+            }
+        });
+    }
+</script>
+
+
+
+</body>
+</html>

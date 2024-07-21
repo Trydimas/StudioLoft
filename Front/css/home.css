@@ -1,0 +1,345 @@
+@import url(base.css);  /* Подключение стилей для нав-меню, переменные, основные стили и футер */
+
+
+/* БЛОК desc-carousel */
+.desc-carousel h1{
+    font-size: 48px;
+}
+.desc-carousel h5{
+    position: relative;
+    padding-left: 5%;
+    font-size: 14px;
+}
+.desc-carousel h5::before{
+    content: '\2713';
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    line-height: 10%;
+    top: 30%;
+    left: 1%;
+}
+
+
+/* карусель */
+.carousel-content{
+    padding:0;
+    margin: 0;
+}
+.carousel-content .carousel-item{
+    display: flex;
+    max-height: 85vh;
+}
+.carousel-content .carousel-item img{
+    object-fit: cover;
+}
+.btn-LR-carousel{
+    background-color: var(--color-bl);
+    border-radius: 50%;
+    width: 40px;
+    height: 40px; 
+    display: flex;    
+}
+.btn-LR-carousel i {
+    margin: auto;
+}
+
+
+/* карусель работников */
+.carousel_workers .carousel-indicators {
+    position: relative;
+    margin-top: 20px;
+}
+.carousel_workers .carousel-indicators [data-bs-target] {
+    background-color: var(--color-gr);
+}
+.carousel_workers .carousel-indicators .active {
+    background-color: black;
+}
+.carousel_workers .caption-box {
+    background-color:var(--color-gr);
+    color: black; /* Белый текст */
+    padding: 10px 20px; /* Внутренний отступ */
+    border-radius: 5px; /* Скругленные углы */
+    font-size: 1.25rem; /* Увеличенный шрифт */
+    text-align: center; /* Центрирование текста */
+    width: 100%; /* Ширина рамки */
+}
+
+
+/*  инфо блоки */
+.info-block {
+    background-color:var(--color-gr); 
+    color: var(--color-bl); /* Черный текст */
+    padding: 20px;
+    border-radius: 5px;
+    margin-bottom: 20px;
+    height: 150px; /* Ограничение высоты блока */
+}
+.info-block h5 {
+    margin-bottom: 10px;
+}
+
+
+/* картинки в блоке our projects */
+.img-container {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+}
+.img-container img {
+    transition: transform var(--dealay), opacity var(--dealay);
+}
+.img-container:hover img {
+    transform: scale(1.05);
+    opacity: 0.7;
+}
+.img-container .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: var(--color-wh);
+    opacity: 0;
+    transition: opacity var(--dealay);
+    background: var(--opacity-co);
+}
+.img-container:hover .overlay {
+    opacity: 1;
+}
+.img-container .overlay h3,
+.img-container .overlay p {
+    margin: 0;
+    padding: 0.5rem;
+}
+
+
+/* Кнопки по проекту */
+.btn-discuss{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    background-color: var(--color-r);
+    color: var(--color-wh);
+}
+.btn-discuss:hover{
+    background: var(--color-wh);
+    border-color: var(--color-r);
+    color: var(--color-r);
+}
+.btn-more{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 200px;
+    height: 50px;
+    border-color: var(--color-bl);
+    color: var(--color-bl);
+}
+.btn-more:hover{
+    border-color: var(--color-r);
+    color: var(--color-r);
+}
+
+
+/*  Блок Преимущества */
+.custom-block {
+    position: relative;
+    border: 1px solid var(--color-gr);
+    border-radius: 15px;
+    background: var(--color-wh);
+}
+.custom-block b{
+    font-size: 14pt;
+}
+.icon-wrapper {
+    position: absolute;
+    top: -25px; /* Половина высоты иконки */
+    left: 50%;
+    transform: translateX(-50%);
+}
+.icon-wrapper i{
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--color-wh);
+    border: 1px solid var(--color-gr);
+    padding: 10px;
+    font-size: 16pt;
+}
+
+
+/*  Карточки */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+
+}
+.card img{
+    height: 35%;
+}
+.card-body{
+    height: 65%;
+}
+.card-body h5 {
+    margin-bottom: 15px;
+}
+.custom-list li {
+    padding: 10px 0;
+    border-bottom: 1px solid var(--color-gr);
+}
+.card-body ul {
+    padding-left: 0;
+    list-style: none;
+}
+.card-body .card-text {
+    margin-top: 20px;
+    font-size: 9pt;
+}
+
+
+/* Затемнённый фон */
+.bg-cover {
+    position: relative;
+    height: 50vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+}
+
+.bg-cover img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 0;
+}
+
+.bg-cover::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: var(--opacity-co); /* Затемнение */
+    z-index: 1;
+}
+
+.bg-cover > div {
+    position: relative;
+    z-index: 2;
+}
+
+.bg-cover h2, .bg-cover p, .bg-cover .btn {
+    margin-bottom: 15px;
+}
+
+.btn-danger {
+    background-color: var(--color-r);
+    border-color: var(--color-r);
+    transition: background-color var(--dealay), border-color var(--dealay);
+}
+
+.btn-danger:hover {
+    background-color: rgba(255, 255, 255, 0.214);
+    border-color: rgba(255, 255, 255, 0.7);
+}
+
+
+/* Модальное окно */
+
+  .modal-content {
+    background-color: white;
+    color: black;
+  }
+  .form-control {
+    border-color: lightgray;
+  }
+
+
+
+/*  Аккордеон */
+.accordion-button {
+    background-color: #f8f9fa;
+    color: #212529;
+}
+.accordion-button:focus {
+    box-shadow: none;
+}
+.accordion-button:not(.collapsed) {
+    color: #212529;
+    background-color: #e9ecef;
+}
+.accordion-body {
+    background-color: #fff;
+}
+
+
+/* медиа запрос */
+/* Преимущества */
+@media (max-width:993px){
+    .custom-block b{
+        font-size: 10pt;
+    }
+    .custom-block p{
+        font-size: 8pt;
+    }
+
+}
+
+@media (max-width:768px){
+    /* БЛОК desc-carousel */
+    .desc-carousel h1{
+        font-size: 24px;   
+    }
+
+
+    /*  Блок Преимущества */
+    .custom-block b{
+        font-size: 12pt;
+    }
+    .custom-block p{
+        font-size: 10pt;
+    }
+    .icon-wrapper i {
+        width: 40px;
+        height: 40px;
+        padding: 8px;
+    
+    }
+    .icon-wrapper {
+        top: -20px; /* Половина высоты иконки для мобильных устройств */
+    }
+}
+
+@media (max-width: 576px) {
+    /* Модальное окно */
+    .modal-dialog {
+      max-width: 90%;
+      margin: 1.75rem auto;
+    }
+  }
+
+@media (max-width:461px){
+    /* БЛОК desc-carousel */
+    .desc-carousel h1{
+        font-size: 16px;   
+    }
+    .desc-carousel h5{
+        font-size: 10px;   
+    }
+}

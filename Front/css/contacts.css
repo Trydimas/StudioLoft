@@ -1,0 +1,127 @@
+@import url(base.css);  /* Подключение стилей для нав-меню, переменные, основные стили и футер */
+
+
+/* Стили для секции с контактами */
+.contact-section {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Стили для изображения, чтобы оно было задним фоном */
+.contact-section img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+}
+
+/* Стили для блока с контактной информацией */
+.contact-info {
+  width: 50%;
+  position: relative;
+  z-index: 2;
+  background-color: rgba(0, 0, 0, 0.75);
+  padding: 20px;
+  border-radius: 10px;
+  text-align: center;
+  color: var(--color-wh);
+}
+
+/* Стили для ссылок внутри контактной информации */
+.contact-info a {
+  color: var(--color-wh);
+  margin: 10px 0;
+}
+
+/* Стили для блока с иконками социальных сетей */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+/* Стили для иконок социальных сетей */
+.social-icons a {
+  color: var(--color-wh);
+  font-size: 24px;
+  margin: 0 10px;
+  transition: color 0.3s;
+}
+
+.social-icons a:hover {
+  color: var(--color-gr);
+}
+
+
+
+
+
+
+  .form-section {
+    padding: 50px 0;
+    background-color: var(--color-wh);;
+  }
+  .contact-form {
+    max-width: 600px;
+    margin: auto;
+  }
+  .form-control, .form-select {
+    background-color: var(--color-wh);;
+    color: var(--color-bl);
+    border: 1px solid var(--color-bl);
+  }
+  .form-control::placeholder, .form-select::placeholder {
+    color: var(--color-bl);
+  }
+  .form-control:focus, .form-select:focus {
+    background-color: var(--color-wh);;
+    color: var(--color-bl);
+    border: 1px solid var(--color-r);
+    outline: none;
+    box-shadow: none;
+  }
+  .form-select {
+    appearance: none;
+    padding-right: 30px;
+    /* background-image: url('data:image/svg+xml;charset=UTF8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 4 5"><path fill="black" d="M2 0L0 2h4zM2 5L0 3h4z"/></svg>'); */
+   content: '\F14C';
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 10px;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+  }
+  .form-select option {
+    background-color: var(--color-bl);
+    color: var(--color-wh);;
+    height: 40px;
+  }
+  .submit-btn {
+    background-color: var(--color-r);;
+    color: var(--color-wh);;
+    transition: 0.3s;
+  }
+  .submit-btn:hover {
+    background-color: var(--color-wh);
+    color: var(--color-r);;
+    border: 1px solid var(--color-r);;
+  }
+  .social-icons {
+    margin-top: 20px;
+  }
+  .social-icons a {
+    color: var(--color-wh);;
+    font-size: 24px;
+    margin: 0 10px;
+    transition: color 0.3s;
+  }
+  .social-icons a:hover {
+    color: var(--color-gr);
+  }
